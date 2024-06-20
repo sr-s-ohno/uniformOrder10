@@ -11,6 +11,8 @@ public class User {
 	private String mail;
 	//住所
 	private String address;
+	//会員フラグ
+	private String member;
 	
 	//各変数のゲッター
 	public String getUser() {
@@ -29,6 +31,10 @@ public class User {
 		return address;
 	}
 	
+	public String getMember() {
+		return member;
+	}
+	
 	//各変数のセッター
 	public void setUser(String user) {
 		this.user = user;
@@ -44,6 +50,10 @@ public class User {
 	
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public void setMember(String member) {
+		this.member = member;
 	}
 
 }

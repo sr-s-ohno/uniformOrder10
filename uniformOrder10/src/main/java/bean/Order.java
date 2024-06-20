@@ -7,6 +7,8 @@ public class Order {
 	private int orderno;
 	//商品ID
 	private String unino;
+	//商品名
+	private String type;
 	//氏名
 	private String user;
 	//注文個数
@@ -27,6 +29,10 @@ public class Order {
 	
 	public String getUnino() {
 		return unino;
+	}
+	
+	public String getType() {
+		return type;
 	}
 	
 	public String getUser() {
@@ -60,6 +66,10 @@ public class Order {
 	
 	public void setUnino(String unino) {
 		this.unino = unino;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	public void setUser(String user) {
