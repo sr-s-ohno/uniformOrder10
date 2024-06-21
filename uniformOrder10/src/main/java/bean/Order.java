@@ -13,6 +13,8 @@ public class Order {
 	private String user;
 	//注文個数
 	private int quantity;
+	//税込み価格
+	private int price;
 	//発注日
     private String date;
     //入金状況
@@ -41,6 +43,10 @@ public class Order {
 	
 	public int getQuantity() {
 		return quantity;
+	}
+	
+	public int getPrice() {
+		return price;
 	}
 	
 	public String getDate() {
@@ -78,6 +84,10 @@ public class Order {
 	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	public void setDate(String date) {

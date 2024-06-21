@@ -46,7 +46,7 @@ String error = (String)request.getAttribute("error");
             } else if( cmd.equals("menu") ) {
          %>
          <!-- 一覧表示リンク -->
-         <A href="<%= request.getContextPath() %>/menu">
+         <A href="<%= request.getContextPath() %>/view/adminMenu.jsp">
          【メニューに戻る】</A>
          <p class="space"></p>
          

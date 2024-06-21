@@ -5,6 +5,25 @@ String error = (String)request.getAttribute("error");
 if(error == null){
 	error = "";
 }
+
+String user = ""; //ユーザーID
+String password = ""; //パスワード
+
+Cookie[] userCookie = request.getCookies(); //クッキー取得
+
+//クッキーがあるか判定
+if (userCookie != null) {
+	for (int i = 0; i < userCookie.length; i++) {
+		//クッキーからユーザ情報の取得
+		if (userCookie[i].getName().equals("user")) {
+			user = userCookie[i].getValue();
+		}
+		//クッキーからパスワード情報の取得
+		if (userCookie[i].getName().equals("password")) {
+			password = userCookie[i].getValue();
+		}
+	}
+}
 %>
 <html>
 	<head>

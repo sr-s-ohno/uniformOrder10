@@ -18,6 +18,8 @@ if (objAdmin == null) {
 	request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 	return;
 }
+
+
 %>
 
 <html>
@@ -43,7 +45,7 @@ if (objAdmin == null) {
 			<p class="space"></p>
 			
 			<tr>
-				<td><a href="<%=request.getContextPath()%>/view/uniformList">商品一覧</a></td>
+				<td><a href="<%=request.getContextPath()%>/uniformList">商品一覧</a></td>
 			</tr>
 			<p class="space"></p>
 			

@@ -1,5 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-
 <!-- ヘッダー部分 -->
 <header>
 	<div class="main">

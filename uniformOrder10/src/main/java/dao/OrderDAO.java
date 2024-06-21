@@ -29,7 +29,6 @@ public class OrderDAO {
 	}
 
 	//DBのorderinfoとuniforminfoテーブルを結合して購入情報を取得するメソッド
-
 	public ArrayList<Order> selectAll() {
 
 		//変数宣言
@@ -53,19 +52,28 @@ public class OrderDAO {
 
 			//検索結果の格納
 			while (rs.next()) {
+				//オブジェクト宣言
 				Order order = new Order();
+
+				//ステータスをセット
 				order.setOrderno(rs.getInt("orderno"));
 				order.setUser(rs.getString("user"));
 				order.setType(rs.getString("type"));
 				order.setQuantity(rs.getInt("quantity"));
+				order.setPrice(rs.getInt("price"));
 				order.setDate(rs.getString("date"));
 				order.setPayment(rs.getString("payment"));
 				order.setSend(rs.getString("send"));
+
+				//配列にオブジェクト追加
 				orderlist.add(order);
+
 			}
 
 		} catch (Exception e) {
+			
 			throw new IllegalStateException(e);
+			
 		} finally {
 			if (smt != null) {
 				try {
@@ -80,6 +88,7 @@ public class OrderDAO {
 				}
 			}
 		}
+		//戻り値
 		return orderlist;
 	}
 
@@ -91,15 +100,13 @@ public class OrderDAO {
 
 		//SQL文
 		String sql = "INSERT INTO orderinfo VALUES(NULL,'"
-				+ order.getOrderno() + "','"
-				+ order.getUnino() + "',"
+				+ order.getUnino() + "','"
 				+ order.getUser() + "',"
 				+ order.getQuantity() + "',"
-				+ order.getDate() + "',"
-				+ order.getPayment() + "',"
-				+ order.getSend() + "',"
-				+ order.getText() + "',"
-				+ ",CURDATE())";
+				+ ",CURDATE(),'"
+				+ order.getPayment() + "','"
+				+ order.getSend() + "','"
+				+ order.getText() + "')";
 
 		try {
 
@@ -126,7 +133,7 @@ public class OrderDAO {
 			}
 		}
 	}
-	
+
 	//受注詳細用のメソッド（引数を注文番号にする）
 	public Order selectByOrderno(int orderno) {
 
@@ -152,6 +159,7 @@ public class OrderDAO {
 				order.setUser(rs.getNString("user"));
 				order.setType(rs.getString("type"));
 				order.setQuantity(rs.getInt("quantity"));
+				order.setPrice(rs.getInt("price"));
 				order.setDate(rs.getString("date"));
 				order.setPayment(rs.getString("payment"));
 				order.setSend(rs.getString("send"));
@@ -175,22 +183,22 @@ public class OrderDAO {
 		}
 		return order;
 	}
-	
+
 	//入金・発送状況変更
-	public void update(Order order) {
+	public void update(String payment, String send, int orderno) {
 		Connection con = null;
 		Statement smt = null;
 
 		//SQL文発行
-		String sql = "UPDATE orderinfo SET payment='" + order.getPayment() + "',send=" + order.getSend() + " WHERE orderno='"
-				+ order.getOrderno() + "'";
+		String sql = "UPDATE orderinfo SET payment='" + payment + "',send='" + send
+				+ "' WHERE orderno='"
+				+ orderno + "'";
 		try {
 			con = getConnection();
 			smt = con.createStatement();
-			
+
 			//UpdateメソッドでSQLを登録
 			int count = smt.executeUpdate(sql);
-			
 
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
@@ -209,8 +217,5 @@ public class OrderDAO {
 			}
 		}
 	}
-	
-	
-	
 
 }

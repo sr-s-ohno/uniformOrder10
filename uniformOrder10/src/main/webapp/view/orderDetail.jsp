@@ -1,15 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList,bean.Order" %>
-<%@page import="bean.Uniform" %>
+<%@page import="java.util.ArrayList, bean.Order, util.MyFormat, bean.Admin" %>
 
 <%
 //金額フォーマット
 MyFormat mf = new MyFormat();
 
 //セッションからユーザー情報を取得
-Admin admin = (Admin)session.getAttribute("admin");
+Admin objAdmin = (Admin)session.getAttribute("objAdmin");
 //セッション切れか確認
-if(admin == null){
+if(objAdmin == null){
 	//セッション切れならerror.jspへフォワード
 	request.setAttribute("error","セッション切れの為、詳細画面が表示できませんでした。");
 	request.setAttribute("cmd","adminlogin");
@@ -18,7 +17,6 @@ if(admin == null){
 }
 
 Order order = (Order)request.getAttribute("order");
-Uniform uniform = (Uniform)request.getAttribute("uniform");
 %>
 
 <html>
@@ -43,7 +41,7 @@ Uniform uniform = (Uniform)request.getAttribute("uniform");
 			      <!-- メニューリンク -->
 	              <A href="<%= request.getContextPath() %>/view/adminMenu.jsp">
 	              【メニューに戻る】</A>
-                  <!-- 書籍一覧リンク -->
+                  <!-- 受注管理一覧リンク -->
 	              <A href="<%= request.getContextPath() %>/orderList">
 	              【受注管理一覧に戻る】</A>
 	              </ul>
@@ -62,36 +60,36 @@ Uniform uniform = (Uniform)request.getAttribute("uniform");
 				if(order != null){
 				%>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">No</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getUnino() %></td>
+					<td style="width:150px; background-color:#8AC75A">No</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getOrderno() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">氏名</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getUser() %></td>
+					<td style="width:150px; background-color:#8AC75A">氏名</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getUser() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">種類</td>
-					<td style="width:100px; background-color:#00ffff"><%=uniform.getType() %></td>
+					<td style="width:150px; background-color:#8AC75A">種類</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getType() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">個数</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getQuantity() %></td>
+					<td style="width:150px; background-color:#8AC75A">個数</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getQuantity() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">合計金額</td>
-					<td style="width:100px; background-color:#00ffff"><%= mf.moneyFormat( uniform.getPrice() * order.getQuantity() %></td>
+					<td style="width:150px; background-color:#8AC75A">合計金額</td>
+					<td style="width:150px; background-color:#bce2e8"><%= mf.moneyFormat( order.getPrice() * order.getQuantity() ) %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">発注日</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getDate() %></td>
+					<td style="width:150px; background-color:#8AC75A">発注日</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getDate() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">入金状況</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getPayment() %></td>
+					<td style="width:150px; background-color:#8AC75A">入金状況</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getPayment() %></td>
 				</tr>
 				<tr>
-					<td style="width:80px; background-color:#00b16b">発送状況</td>
-					<td style="width:100px; background-color:#00ffff"><%=order.getSend() %></td>
+					<td style="width:150px; background-color:#8AC75A">発送状況</td>
+					<td style="width:150px; background-color:#bce2e8"><%=order.getSend() %></td>
 				</tr>
 				<%
 				}
@@ -104,6 +102,7 @@ Uniform uniform = (Uniform)request.getAttribute("uniform");
 		</div>
       
       <!-- フッター -->
+      <div class="push"></div>
       <%@include file= "/common/footer.jsp" %>
 			
 	</body>
