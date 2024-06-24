@@ -21,9 +21,8 @@ Order order = (Order)request.getAttribute("order");
 
 <html>
 <head>
-<title>受注管理一覧（orderList）</title>
-<link rel="stylesheet" type="text/css"
-	href="<%= request.getContextPath() %>/css/style.css">
+   <title>受注管理一覧（orderList）</title>
+   <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
 
@@ -76,8 +75,12 @@ Order order = (Order)request.getAttribute("order");
 					<form action="<%=request.getContextPath()%>/orderUpdate">
 					<table>
 						<tr>
-							<td></td>
-							<td></td>
+							<td>
+							<input type="hidden" name="orderno" value=<%= order.getOrderno() %>
+							</td>
+							<td>
+							<input type="hidden" name="user" value=<%= order.getUser() %>
+							</td>
 							<td style="background-color: #00b16b; width:100">変更前</td>
 							<td style="background-color: #00b16b; width:100">変更後</td>
 						</tr>
@@ -87,9 +90,9 @@ Order order = (Order)request.getAttribute("order");
 							<td style="background-color: #00b16b; width: 100"><%= order.getPayment() %></td>
 							<td>
 								<select name="payment" style="text-align: center; width:100;">
+									<option value="<%= order.getPayment() %>">▼選択してください</option>
 									<option value="入金待ち">入金待ち</option>
 									<option value="入金済み">入金済み</option>
-									<input type="hidden" name="orderno" value=<%= order.getOrderno() %>
 								</select>
 								</td>
 							<tr>
@@ -98,6 +101,7 @@ Order order = (Order)request.getAttribute("order");
 							<td style="background-color: #00b16b; width: 100"><%= order.getSend() %></td>
 							<td>
 								<select name="send" style="text-align:center; width:100;">
+									<option value="<%= order.getSend() %>">▼選択してください</option>
 									<option value="未">未</option>
 									<option value="済">済</option>
 								</select>
@@ -113,9 +117,9 @@ Order order = (Order)request.getAttribute("order");
 					</form>
 				</div>
 			</div>
-				<!-- フッター -->
+	<!-- フッター -->
 	<p class="push"></p>
 	<%@include file="/common/footer.jsp"%>
-		</body>
+</body>
 </html>
 				

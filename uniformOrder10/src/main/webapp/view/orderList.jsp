@@ -28,7 +28,7 @@ ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("order_list");
 
 	<div style="text-align: center">
 		<!-- メニューデザイン -->
-		<!-- フッター -->
+		<!-- ヘッダー -->
 		<%@include file="/common/header.jsp"%>
 		<p class="space2"></p>
 

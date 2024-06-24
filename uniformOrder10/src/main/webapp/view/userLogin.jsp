@@ -41,7 +41,9 @@ if (userCookie != null) {
 			<table style="margin:auto">
 				<form action="<%=request.getContextPath() %>/userLogin" method="post">
 					<tr>
-						<td colspan="2" style="text-align:center"><%=error %></td>
+						<td colspan="2" style="text-align:center">
+						<h3 style="color: 0000ff;"><%=error %></h3>
+						</td>
 					</tr>
 					<tr>
 						<td>名前(ID)</td>

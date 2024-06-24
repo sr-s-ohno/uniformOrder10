@@ -10,6 +10,9 @@
 <%
 String cmd = (String) request.getAttribute("cmd");
 String error = (String) request.getAttribute("error");
+if(error == null){
+	error = "";
+}
 
 String admin = ""; //ユーザーID
 String password = ""; //パスワード
@@ -50,7 +53,7 @@ if (adminCookie != null) {
 			<table>
 				<tr>
 					<th class="detail-table">ID</th>
-					<td><input type="text" name="admin" value=<%=admin%>></td>
+					<td><input type="text" name="admin" value=<%= admin %>></td>
 				</tr>
 				<tr>
 					<th class="detail-table">パスワード</th>
@@ -63,6 +66,9 @@ if (adminCookie != null) {
 				</tr>
 			</table>
 		</form>
+		
+		<h3 style="color: 0000ff;"><%= error %></h3>
+		
 	</div>
 	<%
 	if (cmd != null) {

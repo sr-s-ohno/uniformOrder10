@@ -102,8 +102,8 @@ public class OrderDAO {
 		String sql = "INSERT INTO orderinfo VALUES(NULL,'"
 				+ order.getUnino() + "','"
 				+ order.getUser() + "',"
-				+ order.getQuantity() + "',"
-				+ ",CURDATE(),'"
+				+ order.getQuantity() + ","
+				+ "CURDATE(),'"
 				+ order.getPayment() + "','"
 				+ order.getSend() + "','"
 				+ order.getText() + "')";
