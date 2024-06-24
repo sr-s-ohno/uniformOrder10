@@ -24,50 +24,60 @@ int quantity = objOrder.getQuantity();
 
 <html>
 <head>
-<title>注文確認</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css">
+   <title>ユニフォーム受注管理システム</title>
+   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
 	<div style="text-align: center">
 
 		<!-- メニューデザイン -->
 		<!-- ヘッダー -->
-		<%@include file="/common/header.jsp"%>
-		<p class="space2"></p>
+		<%@include file="/common/userHeader.jsp"%>
+		<p class="space"></p>
+		
+		<div id="menu">
+			<div class="container">
+				<div id="nav">
+					<ul>
+						<!-- メニューリンク -->
+						<A href="<%=request.getContextPath()%>/view/orderInsert.jsp">
+						【注文登録に戻る】</A>
+					</ul>
+				</div>
+			</div>
+		</div>
 
 		<h2 style="text-align: center">注文確認</h2>
-		<hr style="height: 3; background-color: blue" />
+		<hr style="height: 3; background-color: #0095d9" />
 		<p class="space2"></p>
 
 		<table style="margin: auto;">
 
 			<tr>
-				<td style="width:150px; background-color: lightskyblue">商品名</td>
-				<td style="width:150px; background-color: powderblue"><%=uniform.getType()%></td>
+				<td style="width:150px; background-color: #0095d9">商品名</td>
+				<td style="width:150px; background-color: #e0ffff"><%= uniform.getType() %></td>
 			</tr>
 
 			<tr>
-				<td style="width:150px; background-color: lightskyblue">個数</td>
-				<td style="width:150px; background-color: powderblue"><%=quantity%></td>
+				<td style="width:150px; background-color: #0095d9">個数</td>
+				<td style="width:150px; background-color: #e0ffff"><%= quantity %></td>
 			</tr>
 
 			<tr>
-				<td style="width:150px; background-color: lightskyblue">合計価格</td>
-				<td style="width:150px; background-color: powderblue"><%=mf.moneyFormat(uniform.getPrice() * quantity)%>
+				<td style="width:150px; background-color: #0095d9">合計価格</td>
+				<td style="width:150px; background-color: #e0ffff"><%= mf.moneyFormat(uniform.getPrice() * quantity) %>
 			</tr>
 
 		</table>
 
-		<form action="<%=request.getContextPath()%>/orderCheck" style="text-align: center">
+		<form action="<%=request.getContextPath()%>/orderCheck"">
 			<input type="submit" value="注文">
 		</form>
 	</div>
 
 	<div class="push"></div>
 	<!-- フッター -->
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/userFooter.jsp"%>
 
-	</div>
 </body>
 </html>

@@ -16,7 +16,7 @@ String error = (String)request.getAttribute("error");
          
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
-         <%@include file= "/common/header.jsp" %>
+         <%@include file= "/common/adminHeader.jsp" %>
          
 		 <h2>■■エラー■■</h2>
          <p class="space2"></p>
@@ -50,15 +50,15 @@ String error = (String)request.getAttribute("error");
          【メニューに戻る】</A>
          <p class="space"></p>
          
-        <%
-           }
-        %>
+         <%
+            }
+         %>
         
       </div>
       
       <div class="push"></div>
       <!-- フッター -->
-      <%@include file= "/common/footer.jsp" %>
+      <%@include file= "/common/adminFooter.jsp" %>
       
    </body>
 </html>

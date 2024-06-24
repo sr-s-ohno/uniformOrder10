@@ -36,22 +36,20 @@ public class OrderInsertServlet extends HttpServlet {
 			User objUser = (User) session.getAttribute("objUser");
 			if (objUser != null) {
 				member = objUser.getMember();
-			} else {
-				member = null;
-				objUser = new User();
 			}
 
 			//購入された情報のパラメータを取得する
-			if (member == null) {
-				user = request.getParameter("user");
-				mail = request.getParameter("mail");
-				address = request.getParameter("address");
-
-			} else {
-
+			if (member.equals("1")) {
+				
 				user = objUser.getUser();
 				mail = objUser.getMail();
 				address = objUser.getAddress();
+
+			} else {
+
+				user = request.getParameter("user");
+				mail = request.getParameter("mail");
+				address = request.getParameter("address");
 
 			}
 

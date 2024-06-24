@@ -37,7 +37,7 @@ public class OrderDAO {
 
 		//SQL文
 		String sql = "SELECT o.orderno,o.user,u.type,o.quantity,u.price,o.date,o.payment,o.send "
-				+ "FROM uniforminfo u INNER JOIN orderinfo o ON u.unino=o.unino";
+				+ "FROM uniforminfo u INNER JOIN orderinfo o ON u.unino=o.unino ORDER BY o.orderno DESC";
 
 		//return用のArraylistの作成
 		ArrayList<Order> orderlist = new ArrayList<Order>();

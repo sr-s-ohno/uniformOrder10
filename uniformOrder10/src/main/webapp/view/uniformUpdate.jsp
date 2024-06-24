@@ -7,28 +7,39 @@
  -->
 
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="bean.Uniform, util.MyFormat"%>
+<%@page import="bean.Uniform, util.MyFormat, bean.Admin"%>
 
 <!-- セッションからユニフォーム情報を取得 -->
 <%
 //金額フォーマット
 MyFormat mf = new MyFormat();
 
+//セッションからユーザー情報を取得
+Admin objAdmin = (Admin) session.getAttribute("objAdmin");
+//セッション切れか確認
+if (objAdmin == null) {
+	//セッション切れならerror.jspへフォワード
+	request.setAttribute("error", "セッション切れの為、商品変更画面が表示できませんでした。");
+	request.setAttribute("cmd", "adminlogin");
+	request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+	return;
+}
+
 Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 %>
 
 <html>
 <head>
-<title>商品情報変更</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css">
+   <title>ユニフォーム受注管理システム</title>
+   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 
 <body>
 	<div style="text-align: center">
+	
 		<!-- メニューデザイン -->
 		<!-- ヘッダー -->
-		<%@include file="/common/header.jsp"%>
+		<%@include file="/common/adminHeader.jsp"%>
 		<p class="space"></p>
 
 		<!-- メニュー部分 -->
@@ -38,21 +49,22 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 				<ul>
 					<!-- メニューリンク -->
 					<A href="<%=request.getContextPath()%>/view/adminMenu.jsp">
-						【メニューに戻る】</A>
+					【メニューに戻る】</A>
 					<!-- 書籍一覧リンク -->
-					<A href="<%=request.getContextPath()%>/uniformList"> 【商品一覧に戻る】</A>
+					<A href="<%=request.getContextPath()%>/uniformList">
+					【商品一覧に戻る】</A>
 				</ul>
 			</div>
 		</div>
 
 		<h2>商品情報変更</h2>
-		<hr style="height: 3; background-color: #008000" />
+		<hr style="height: 3; background-color: #00b16b" />
 		<p class="space2"></p>
 
 		<!-- 変更入力フォーム -->
 		<form action="<%=request.getContextPath()%>/uniformUpdate" method="get">
 			<!-- uninoを隠しフィールドとして送信準備 -->
-			<input type="hidden" name="unino" value="<%=objUniform.getUnino()%>">
+			<input type="hidden" name="unino" value="<%= objUniform.getUnino() %>">
 			<!-- テーブル作成 -->
 			<table style="margin: 0 auto">
 				<!-- セッションから情報を取得できている（正常動作） -->
@@ -68,28 +80,28 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 				
 				<!-- ユニフォームIDの行 -->
 				<tr>
-					<td style="background-color: #a9a9a9; width: 100">ID</td>
+					<td style="background-color: #00b16b; width: 150">ID</td>
 					<td style="width: 180"><%= objUniform.getUnino() %></td>
 					<td style="width: 150"><%= objUniform.getUnino() %></td>
 				</tr>
 				
 				<!-- 商品名の行 -->
 				<tr>
-					<td style="background-color: #a9a9a9; width: 100">商品名</td>
+					<td style="background-color: #00b16b; width: 150">商品名</td>
 					<td style="width: 180"><%= objUniform.getType() %></td>
 					<td style="width: 150"><input type="text" size="30" name="type"></td>
 				</tr>
 				
 				<!-- 価格の行 -->
 				<tr>
-					<td style="background-color: #a9a9a9; width: 100">税込み価格</td>
+					<td style="background-color: #00b16b; width: 150">税込み価格</td>
 					<td style="width: 180"><%= objUniform.getPrice() %></td>
 					<td style="width: 150"><input type="text" size="30" name="price"></td>
 				</tr>
 				
 				<!-- 在庫数の行 -->
 				<tr>
-					<td style="background-color: #a9a9a9; width: 100">在庫</td>
+					<td style="background-color: #00b16b; width: 150">在庫</td>
 					<td style="width: 180"><%= objUniform.getStock() %></td>
 					<td style="width: 150"><input type="text" size="30" name="stock"></td>
 				</tr>
@@ -108,7 +120,7 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 	
 	<!-- フッター -->
 	<div class="push"></div>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/adminFooter.jsp"%>
 	
 	</div>
 </body>

@@ -113,7 +113,7 @@ public class UniformInsertServlet extends HttpServlet {
 			} else if( cmd.equals("uniformInsert") ) {
 				
 				request.setAttribute("error", error);
-				request.getRequestDispatcher("/view/unifromInsert.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/uniformInsert.jsp").forward(request, response);
 				
 			} else {
 				request.setAttribute("error", error);

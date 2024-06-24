@@ -16,21 +16,26 @@ if(objAdmin == null){
 	return;
 }
 
+String message = (String)request.getAttribute("message");
+if(message == null){
+	message = "";
+}
+
 ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("order_list");
 %>
 
 <html>
 <head>
-<title>受注管理一覧（orderList）</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css">
+   <title>受注管理一覧（orderList）</title>
+   <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
 
 	<div style="text-align: center">
 		<!-- メニューデザイン -->
 		<!-- ヘッダー -->
-		<%@include file="/common/header.jsp"%>
-		<p class="space2"></p>
+		<%@include file="/common/adminHeader.jsp"%>
+		<p class="space"></p>
 
 		<!-- メニュー部分 -->
 		<div id="menu">
@@ -90,9 +95,10 @@ ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("order_list");
 						<!-- 発送状況 -->
 						<td style="text-align: center; width: 300"><%= list.get(i).getSend() %></td>
 
-						<td style="text-align: center">
-						<a href="<%= request.getContextPath() %>/orderDetail?orderno=<%=list.get(i).getOrderno()%>&cmd=detail">詳細
-						<a href="<%= request.getContextPath() %>/orderDetail?orderno=<%=list.get(i).getOrderno()%>&cmd=update">更新
+						<td style="text-align: center">&emsp; 
+						<a href="<%= request.getContextPath() %>/orderDetail?orderno=<%=list.get(i).getOrderno()%>&cmd=detail">詳細</a>
+						&emsp; &emsp; 
+						<a href="<%= request.getContextPath() %>/orderDetail?orderno=<%=list.get(i).getOrderno()%>&cmd=update">更新</a>
 						</td>
 						<td colspa n="3">&nbsp;</td>
 					</tr>
@@ -102,13 +108,17 @@ ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("order_list");
 				    }
 				    %>
 				        
-					</table>
-					<p class="space"></p>
+				</table>
+				<p class="space"></p>
+				
+				<h3 style="color: #a52a2a;"><%= message %></h3>
 
-				</div>
-
-				<!-- フッター -->
-				<div class="push"></div>
-				<%@include file="/common/footer.jsp"%>
+			</div>
+		</div>
+		
+		<!-- フッター -->
+		<div class="push"></div>
+		<%@include file="/common/adminFooter.jsp"%>
+		
 </body>
 </html>

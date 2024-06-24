@@ -16,7 +16,7 @@ int count = (int)request.getAttribute("count");
 
 <html>
    <head>
-      <title>受注管理システム</title>
+      <title>ユニフォーム受注管理システム</title>
       <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css">
    </head>
    
@@ -25,7 +25,8 @@ int count = (int)request.getAttribute("count");
          
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
-         <%@include file= "/common/header.jsp" %>
+         <%@include file= "/common/userHeader.jsp" %>
+         <p class="space"></p>
          
          <!-- メニュー部分 -->
 		 <div id="menu">
@@ -42,7 +43,7 @@ int count = (int)request.getAttribute("count");
          </div>
          
 		 <h2>会員登録完了</h2>
-		 <hr style="height:3; background-color:#008000" />
+		 <hr style="height:3; background-color:#0095d9" />
          <p class="space2"></p>
          
          <!-- 報告 -->
@@ -50,19 +51,19 @@ int count = (int)request.getAttribute("count");
          <%
             if( count > 0 ) {
          %>
-            <h3 style="color: ff0000;">登録が完了しました。</h3>
+            <h3 style="color: #a52a2a;">登録が完了しました。</h3>
          <%
             } else {
          %>
-            <h3 style="color: 0000ff;">登録が出来ていません。</h3>
+            <h3 style="color: #a52a2a;">登録が出来ていません。</h3>
          <%
             }
          %>
-      </div>
+     </div>
       
-      <div class="push"></div>
-      <!-- フッター -->
-      <%@include file= "/common/footer.jsp" %>
+     <!-- フッター -->
+     <div class="push"></div>
+     <%@include file= "/common/userFooter.jsp" %>
       
    </body>
 </html>

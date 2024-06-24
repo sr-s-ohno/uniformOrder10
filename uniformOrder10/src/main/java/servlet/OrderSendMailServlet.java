@@ -74,7 +74,7 @@ public class OrderSendMailServlet extends HttpServlet {
 			text.append("発注日 : " + objDate + "\n");
 			
 			//自動送信
-			text.append("\nまたのご利用よろしくお願いします。");
+			text.append("\nまたのご利用よろしくお願いします。\n");
 			text.append("※このメールはサーバーからの自動送信メールです。\n\n");
             text.append("このメールにご返信頂いてもお応え出来かねますのでご了承下さい。\n\n");
 			

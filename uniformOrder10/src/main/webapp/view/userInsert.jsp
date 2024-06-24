@@ -27,7 +27,8 @@ if(error == null){
          
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
-         <%@include file= "/common/header.jsp" %>
+         <%@include file= "/common/userHeader.jsp" %>
+         <p class="space"></p>
 		
 		 <!-- メニュー部分 -->
 		 <div id="menu">
@@ -44,7 +45,7 @@ if(error == null){
          </div>
          
 		 <h2>会員登録</h2>
-         <hr style="height:3; background-color:#008000" />
+         <hr style="height:3; background-color:#0095d9" />
          <p class="space2"></p>
           
          <!-- 変更入力フォーム -->
@@ -53,27 +54,27 @@ if(error == null){
 	         <table style="margin:0 auto">
 	         	    
 	            <tr>
-	               <td style="background-color: #a9a9a9; width:200">氏名（ID）</td>
+	               <td style="background-color: #0095d9; width:200">氏名（ID）</td>
 	               <td style="width:150"><input type="text" size="30" name="user"></td>
 	            </tr>
 	            
 	            <tr>
-	               <td style="background-color: #a9a9a9; width:200">メールアドレス</td>
+	               <td style="background-color: #0095d9; width:200">メールアドレス</td>
 	               <td style="width:150"><input type="text" size="30" name="mail"></td>
 	            </tr>
 	            
 	            <tr>
-	               <td style="background-color: #a9a9a9; width:200">住所</td>
+	               <td style="background-color: #0095d9; width:200">住所</td>
 	               <td style="width:150"><input type="text" size="30" name="address"></td>
 	            </tr>
 	               
 	            <tr>
-	               <td style="background-color: #a9a9a9; width:200">パスワード</td>
+	               <td style="background-color: #0095d9; width:200">パスワード</td>
 	               <td style="width:150"><input type="password" size="30" name="pass"></td>
 	            </tr>
 	            
 	            <tr>
-	               <td style="background-color: #a9a9a9; width:200">新パスワード(確認用)</td>
+	               <td style="background-color: #0095d9; width:200">新パスワード(確認用)</td>
 	               <td style="width:150"><input type="password" size="30" name="passCheck"></td>
 	            </tr>
 
@@ -87,11 +88,11 @@ if(error == null){
       </div>
       
       <p class="space"></p>
-      <p style="color: ff0000; text-align: center"><%= error %></p>
+      <p style="color: #a52a2a; text-align: center"><%= error %></p>
       
       <!-- フッター -->
       <div class="push"></div>
-      <%@include file= "/common/footer.jsp" %>
+      <%@include file= "/common/userFooter.jsp" %>
       
    </body>
 </html>

@@ -7,6 +7,7 @@
 
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="bean.Admin" %>
+
 <%
 //セッションからユーザー情報を取得
 Admin objAdmin = (Admin) session.getAttribute("objAdmin");
@@ -18,24 +19,22 @@ if (objAdmin == null) {
 	request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 	return;
 }
-
-
 %>
 
 <html>
 <head>
-<title>受注管理システム</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+   <title>受注管理システム</title>
+   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
    <div style="text-align:center">
 
     <!-- ヘッダー -->
-	<%@include file="/common/header.jsp"%>
-	<p class="space2"></p>
+	<%@include file="/common/adminHeader.jsp"%>
+	<p class="space"></p>
 
 	<h2>管理者メニュー</h2>
-	<hr style="height: 3; background-color: #008000" />
+	<hr style="height: 3; background-color: #00b16b"/>
 
 	<div id="main">
 		<table>
@@ -66,6 +65,7 @@ if (objAdmin == null) {
 	
 	<!-- フッター -->
 	<p class="push"></p>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/adminFooter.jsp"%>
+	
 </body>
 </html>

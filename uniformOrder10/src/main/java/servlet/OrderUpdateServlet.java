@@ -75,8 +75,9 @@ public class OrderUpdateServlet extends HttpServlet {
 				sendMail.setAdress(objUser.getMail());
 				//メール送信
 				sendMail.createMail();
-
-				return;
+				
+				//リクエストスコープ
+				request.setAttribute("message", "メールを送信しました。");
 
 			} else if ("入金済み".equals(payment)) {
 				//メール開始
@@ -99,8 +100,9 @@ public class OrderUpdateServlet extends HttpServlet {
 				sendMail.setAdress(objUser.getMail());
 				//メール送信
 				sendMail.createMail();
-
-
+				
+				//リクエストスコープ
+				request.setAttribute("message", "メールを送信しました。");
 			}
 
 		} catch (IllegalStateException e) {

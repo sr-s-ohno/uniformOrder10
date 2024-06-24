@@ -40,13 +40,19 @@ public class OrderCheckServlet extends HttpServlet {
 			//order.setUser(user);
 			//order.setUnino(unino);
 			
+			//会員権限のチェック
 			String member = null;
 			member = objUser.getMember();
-			if(member == null) {
+			
+			if(member.equals("2")) {
+				
+				//ユーザー情報使用
 				String user = objUser.getUser();
 				order.setUser(user);
+				//ユーザー情報強制登録
 				UserDAO objUserDao = new UserDAO();
 				objUserDao.insert(objUser);
+				//uninoをセット
 				String unino = uniform.getUnino();
 				order.setUnino(unino);
 			}

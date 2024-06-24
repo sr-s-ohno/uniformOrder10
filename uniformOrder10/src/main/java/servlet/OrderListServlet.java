@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import bean.Admin;
 import bean.Order;
@@ -53,9 +52,6 @@ public class OrderListServlet extends HttpServlet {
 			
 			//受注管理一覧を配列で取得
 			orderList = objOrderDao.selectAll();
-			
-			//要素を逆順にする
-			Collections.reverse(orderList);
 
 			//セッションスコープに登録
 			request.setAttribute("order_list", orderList);

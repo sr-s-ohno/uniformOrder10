@@ -30,7 +30,8 @@ Order order = (Order)request.getAttribute("order");
          
          	<!-- メニューデザイン -->
          	<!-- ヘッダー -->
-         	<%@include file= "/common/header.jsp" %>
+         	<%@include file= "/common/adminHeader.jsp" %>
+         	<p class="space"></p>
          	
          	<!-- メニュー部分 -->
 		 	<div id="menu">
@@ -50,7 +51,7 @@ Order order = (Order)request.getAttribute("order");
          	</div>
          	
          	<h2>注文詳細情報</h2>
-         	<hr style="height:3; background-color:#008000" />
+         	<hr style="height:3; background-color:#00b16b"/>
          	<p class="space2"></p>
          	
 		
@@ -96,14 +97,13 @@ Order order = (Order)request.getAttribute("order");
 				%>
 			</table>
 			</div>
-			
 			<p class="space"></p>
 			
 		</div>
       
       <!-- フッター -->
       <div class="push"></div>
-      <%@include file= "/common/footer.jsp" %>
+      <%@include file= "/common/adminFooter.jsp" %>
 			
 	</body>
 </html>

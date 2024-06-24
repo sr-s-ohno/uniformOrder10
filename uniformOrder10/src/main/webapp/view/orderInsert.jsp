@@ -14,17 +14,26 @@ uniList = objUniDao.selectAll();
 String member = null;
 User objUser = null;
 
-//会員権限の強制
-member = request.getParameter("member");
-if (member == null) {
-	objUser = (User) session.getAttribute("objUser");
-	objUser.setMember("1");
-	session.setAttribute("objUser", objUser);
+//入力ミス
+String error = (String)request.getAttribute("error");
+if(error == null){
+	error = "";
 }
+
+//ユーザー情報取得
+objUser = (User) session.getAttribute("objUser");
+
+//会員権限の強制
+if (objUser == null) {
+	objUser = new User();
+	objUser.setMember("2");
+}
+
+session.setAttribute("objUser", objUser);
 %>
 <html>
 <head>
-   <title>注文登録</title>
+   <title>ユニフォーム受注管理システム</title>
    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
@@ -33,22 +42,21 @@ if (member == null) {
 
 		<!-- メニューデザイン -->
 		<!-- ヘッダー -->
-		<%@include file="/common/header.jsp"%>
-		<p class="space2"></p>
+		<%@include file="/common/userHeader.jsp"%>
+		<p class="space"></p>
 
 		<h2>注文登録</h2>
-		<hr style="height: 3; background-color: blue" />
+		<hr style="height: 3; background-color: #0095d9" />
 		<p class="space2"></p>
 
 		<!-- 入力フォーム -->
-		<form action="<%=request.getContextPath()%>/orderInsert"
-			style="text-align: center" method="post">
+		<form action="<%=request.getContextPath()%>/orderInsert" style="text-align: center" method="post">
 			<table style="margin: 0 auto;">
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">氏名</td>
-					<td style="width:150">
+					<td style="background-color: #0095d9; width:200">氏名</td>
+					<td style="background-color: #e0ffff; width:150">
 						<%
-						if (objUser == null) {
+						if (objUser.getUser() == null) {
 						%>
 						<input type="text" name="user">
 						<%
@@ -62,10 +70,10 @@ if (member == null) {
 				</tr>
 
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">メールアドレス</td>
-					<td style="width:150">
+					<td style="background-color: #0095d9; width:200">メールアドレス</td>
+					<td style="background-color: #e0ffff; width:150">
 						<%
-						if (objUser == null) {
+						if (objUser.getMail() == null) {
 						%>
 						<input type="text" name="mail">
 						<%
@@ -79,10 +87,10 @@ if (member == null) {
 				</tr>
 
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">住所</td>
-					<td style="width:150">
+					<td style="background-color: #0095d9; width:200">住所</td>
+					<td style="background-color: #e0ffff; width:150">
 						<%
-						if (objUser == null) {
+						if (objUser.getAddress() == null) {
 						%>
 						<input type="text" name="address">
 						<%
@@ -96,8 +104,8 @@ if (member == null) {
 				</tr>
 
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">商品</td>
-					<td style="width:150"><select name="type">
+					<td style="background-color: #0095d9; width:200">商品</td>
+					<td style="background-color: #e0ffff; width:150"><select name="type">
 							<%
 							for (int i = 0; i < uniList.size(); i++) {
 							%>
@@ -111,26 +119,28 @@ if (member == null) {
 				</tr>
 
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">個数</td>
-					<td style="width:150"><input type="text" name="quantity"></td>
+					<td style="background-color: #0095d9; width:200">個数</td>
+					<td style="background-color: #e0ffff; width:150">
+					<input type="text" name="quantity"></td>
 				</tr>
 
 				<tr>
-					<td style="background-color: #a9a9a9; width:200">備考欄</td>
-					<td style="width:150"><textarea rows="8" cols="20" name="address"></textarea></td>
+					<td style="background-color: #0095d9; width:200">備考欄</td>
+					<td style="background-color: #e0ffff; width:150">
+					<textarea rows="8" cols="20" name="address"></textarea></td>
 				</tr>
 
 			</table>
 			<input type="submit" value="注文">
 		</form>
 		
+		<p style="color: #a52a2a; text-align: center"><%= error %></p>
+		
 	</div>
-
-	<div class="push"></div>
+	
 	<!-- フッター -->
-	<%@include file="/common/footer.jsp"%>
-
-	</div>
+	<div class="push"></div>
+	<%@include file="/common/userFooter.jsp"%>
 
 </body>
 </html>

@@ -10,7 +10,6 @@
 
 h1 {
 	padding: 15px 0;
-	color: #008000;
 	text-align: center;
 }
 
@@ -19,8 +18,17 @@ h2 {
 	color: #a52a2a;
 }
 
+hr.admin {
+	height: 5px;
+	background-color: #00b16b;
+}
+
 h4 {
 	padding: 10px 0;
+}
+
+#admin {
+	background-color: #00b16b;
 }
 
 ul {
@@ -80,10 +88,12 @@ table {
       ページ全体設定
    ==================================== */
 /* ブラウザ全体の画面設定 */
+/* 画面の背景色*/
 html,
 body {
 	height: 100%;
 	margin: 0;
+	background-color: #f0f0f2;
 }
 
 #wrap {
@@ -100,15 +110,24 @@ body {
 }
 
 /* ヘッダー */
-header {
+/* 管理者画面用 */
+header.admin {
 	padding-top: 10px;
-	border-bottom: 5px solid #008000;
+	border-bottom: 5px solid#00b16b;
+	text-align: center;
+}
+
+/* ユーザー画面用 */
+header.user {
+	padding-top: 10px;
+	border-bottom: 5px solid #0095d9;
 	text-align: center;
 }
 
 /* メニュー画面 */
 #menu {
 	position: relative;
+	text-align:left;
 }
 
 /* メイン画面 */
@@ -119,14 +138,26 @@ header {
 }
 
 /* フッター */
-footer {
+/* 管理者用 */
+footer.admin {
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	height: 100px;
-	background: #ffffff;
-	border-top: 5px solid #008000;
+	background: #f0f0f2;
+	border-top: 5px solid #00b16b
+}
+
+/* ユーザー用 */
+footer.user {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	background: #f0f0f2;
+	border-top: 5px solid #0095d9;
 }
 
 .push {
@@ -137,7 +168,7 @@ footer {
 	margin-bottom: 25px;
 }
 
-.space2{
+.space2 {
 	margin-bottom: 50px;
 }
 
@@ -145,7 +176,6 @@ footer {
 #nav {
 	position: absolute;
 	top: 23px;
-	width: 300px;
 }
 
 #nav li {
@@ -163,4 +193,18 @@ border {
 	border-bottom: 2px solid #000000;
 	border-top: 2px solid #000000;
 	width: 100%;
+}
+
+/* ====================================
+      管理者画面カラー設定
+   ==================================== */
+
+/* 管理者画面文字色 */
+.adminWord {
+	color: #00b16b;
+}
+
+/* ユーザー画面文字色 */
+.userWord {
+	color: #0095d9;
 }

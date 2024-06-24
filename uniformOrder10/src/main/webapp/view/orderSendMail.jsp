@@ -38,11 +38,11 @@ if(message == null){
          
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
-         <%@include file= "/common/header.jsp" %>
-         <p class="space2"></p>
+         <%@include file= "/common/userHeader.jsp" %>
+         <p class="space"></p>
          
 		 <h2>注文完了</h2>
-		 <hr style="height:3; background-color:#008000" />
+		 <hr style="height:3; background-color:#0095d9" />
          <p class="space2"></p>
          
          <!-- 報告 -->
@@ -50,13 +50,13 @@ if(message == null){
          <h3>注文が完了しました。</h3>
          
          <p class="space"></p>
-         <h3 style="color: 0000ff;"><%= message %></h3>
+         <h3 style="color: #a52a2a;"><%= message %></h3>
          
          <p class="space2"></p>
          
          <!-- 遷移 -->
          <!-- ユーザーログインリンク -->
-	     <A href="<%= request.getContextPath() %>/view/userLogin.jsp">【ログイン画面へ】</A>
+	     <A href="<%= request.getContextPath() %>/userLogout">【ログイン画面へ】</A>
 	     <!-- 注文登録リンク -->
 	     <A href="<%= request.getContextPath() %>/view/orderInsert.jsp">【注文登録へ戻る】</A>
 	     
@@ -64,7 +64,7 @@ if(message == null){
       
       <div class="push"></div>
       <!-- フッター -->
-      <%@include file= "/common/footer.jsp" %>
+      <%@include file= "/common/userFooter.jsp" %>
       
    </body>
 </html>

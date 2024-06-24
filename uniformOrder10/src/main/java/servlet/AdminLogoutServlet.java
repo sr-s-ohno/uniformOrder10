@@ -33,12 +33,8 @@ public class AdminLogoutServlet extends HttpServlet {
 			//セッションの破棄
 			session.invalidate();
 
-			request.getRequestDispatcher("/view/adminLogin.jsp").forward(request, response);
-
-		}
-
 		//ログイン画面もしくはエラー画面へ遷移
-		catch (IllegalStateException e) {
+		} catch (IllegalStateException e) {
 
 			error = "DB接続エラーの為、ログアウトはできません。";
 			cmd = "adminlogin";

@@ -36,19 +36,21 @@ if (adminCookie != null) {
 
 <html>
 <head>
-<title>ログイン</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
+   <title>ログイン</title>
+   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
  <div style="text-align:center">
-	<%@include file="/common/header.jsp"%>
+ 
+    <!-- ヘッダー -->
+	<%@include file="/common/adminHeader.jsp"%>
+	<p class="space"></p>
 
 	<h2>管理者ログイン</h2>
-	<hr style="height: 3; background-color: #008000" />
+	<hr style="height: 3; background-color: #00b16b" />
 	<p class="space2"></p>
 
-	<div>
+	<div id="main">
 		<form action="<%=request.getContextPath()%>/adminLogin" method="post">
 			<table>
 				<tr>
@@ -57,7 +59,7 @@ if (adminCookie != null) {
 				</tr>
 				<tr>
 					<th class="detail-table">パスワード</th>
-					<td><input type="password" name="password" value=<%=password%>></td>
+					<td><input type="password" name="password" value=<%= password %>></td>
 				</tr>
 			</table>
 			<table>
@@ -67,24 +69,14 @@ if (adminCookie != null) {
 			</table>
 		</form>
 		
-		<h3 style="color: 0000ff;"><%= error %></h3>
+		<h3 style="color: #a52a2a;"><%= error %></h3>
 		
 	</div>
-	<%
-	if (cmd != null) {
-	%>
-	<table>
-		<tr>
-			<td><%=error%></td>
-		</tr>
-	</table>
-	<%
-	}
-	%>
 	</div>
 	
 	<!-- フッター -->
 	<p class="push"></p>
-	<%@include file="/common/footer.jsp"%>
+	<%@include file="/common/adminFooter.jsp"%>
+	
 </body>
 </html>
