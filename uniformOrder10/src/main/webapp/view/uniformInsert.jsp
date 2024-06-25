@@ -32,7 +32,7 @@ if(error == null){
 		</div>
 
 		<h2 style="text-align: center">商品登録</h2>
-		<hr style="height: 3; background-color: #00b16b" />
+		<hr style="height: 5; background-color: #7fef6f" />
 		<p class="space2"></p>
 
 		<form action="<%=request.getContextPath()%>/uniformInsert">

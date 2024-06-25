@@ -44,7 +44,7 @@ String error = (String) request.getAttribute("error");
 		</div>
 
 		<h2>商品一覧</h2>
-		<hr style="height: 3; background-color: #00b16b" />
+		<hr style="height: 5; background-color: #7fef6f" />
 		<p class="space2"></p>
 
 		<table style="margin: 0 auto">

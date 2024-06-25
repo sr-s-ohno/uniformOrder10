@@ -53,7 +53,7 @@ ArrayList<Order> list = (ArrayList<Order>)request.getAttribute("order_list");
 
 
 		<h2>受注管理一覧</h2>
-		<hr style="height: 3; background-color:#00b16b"/>
+		<hr style="height: 5; background-color:#7fef6f"/>
 		<p class="space2"></p>
 
 			<div style="margin-bottom: 250px">

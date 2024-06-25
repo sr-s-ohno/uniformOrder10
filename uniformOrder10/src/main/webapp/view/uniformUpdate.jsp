@@ -58,11 +58,11 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 		</div>
 
 		<h2>商品情報変更</h2>
-		<hr style="height: 3; background-color: #00b16b" />
+		<hr style="height: 5; background-color: #7fef6f" />
 		<p class="space2"></p>
 
 		<!-- 変更入力フォーム -->
-		<form action="<%=request.getContextPath()%>/uniformUpdate" method="get">
+		<form action="<%= request.getContextPath() %>/uniformUpdate" method="get">
 			<!-- uninoを隠しフィールドとして送信準備 -->
 			<input type="hidden" name="unino" value="<%= objUniform.getUnino() %>">
 			<!-- テーブル作成 -->
@@ -107,14 +107,13 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 				</tr>
 				<%
 					}
-	         		%>
+	         	%>
 			</table>
 			<p class="space2"></p>
 
 			<input type="submit" value="変更完了">
 			<p class="space"></p>
 
-			</table>
 		</form>
 	</div>
 	
@@ -122,6 +121,5 @@ Uniform objUniform = (Uniform) request.getAttribute("objUniform");
 	<div class="push"></div>
 	<%@include file="/common/adminFooter.jsp"%>
 	
-	</div>
 </body>
 </html>

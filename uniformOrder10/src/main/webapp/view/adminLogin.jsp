@@ -47,7 +47,7 @@ if (adminCookie != null) {
 	<p class="space"></p>
 
 	<h2>管理者ログイン</h2>
-	<hr style="height: 3; background-color: #00b16b" />
+	<hr style="height: 5; background-color: #7fef6f" />
 	<p class="space2"></p>
 
 	<div id="main">

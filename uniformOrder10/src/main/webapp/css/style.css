@@ -93,7 +93,9 @@ html,
 body {
 	height: 100%;
 	margin: 0;
-	background-color: #f0f0f2;
+	background-color: #fefeff;
+	font-family: sans-serif;
+
 }
 
 #wrap {
@@ -102,6 +104,11 @@ body {
 	height: 100%;
 	height: auto !important;
 	margin: auto;
+}
+
+hr.user{
+	height:5px;
+	background-color: #9de9f0;
 }
 
 .container {
@@ -113,21 +120,39 @@ body {
 /* 管理者画面用 */
 header.admin {
 	padding-top: 10px;
-	border-bottom: 5px solid#00b16b;
 	text-align: center;
+	background: linear-gradient(#7fef6f, #fefeff);
+	border-bottom: 5px solid#7fef6f;
 }
 
 /* ユーザー画面用 */
 header.user {
 	padding-top: 10px;
-	border-bottom: 5px solid #0095d9;
 	text-align: center;
+	background: linear-gradient(#a0d0ff, #fefeff);
+	border-bottom: 5px solid #a0d0ff;
+	
+}
+
+/* エラー画面用 */
+header.error {
+	padding-top: 10px;
+	text-align: center;
+	background: linear-gradient(#ee0000, #fefeff);
+	border-bottom: 5px solid #ee0000;
 }
 
 /* メニュー画面 */
 #menu {
 	position: relative;
-	text-align:left;
+	text-align: left;
+	
+}
+
+#logo {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
 }
 
 /* メイン画面 */
@@ -145,8 +170,9 @@ footer.admin {
 	bottom: 0;
 	width: 100%;
 	height: 100px;
-	background: #f0f0f2;
-	border-top: 5px solid #00b16b
+	background: linear-gradient(#fefeff,#7fef6f);
+	display: flex;
+	align-items: flex-end;
 }
 
 /* ユーザー用 */
@@ -156,8 +182,22 @@ footer.user {
 	bottom: 0;
 	width: 100%;
 	height: 100px;
-	background: #f0f0f2;
-	border-top: 5px solid #0095d9;
+	background: linear-gradient(#fefeff,#a0d0ff);
+	display: flex;
+	align-items: flex-end;
+}
+
+/* エラー用 */
+footer.error {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	background: linear-gradient(#fefeff,#ee0000);
+	display: flex;
+	align-items: flex-end;
+	border-top: 5px solid #ee0000;
 }
 
 .push {
@@ -201,10 +241,18 @@ border {
 
 /* 管理者画面文字色 */
 .adminWord {
-	color: #00b16b;
+	color: #332200;
+}
+
+.userColor {
+	color: #40e0d0
 }
 
 /* ユーザー画面文字色 */
 .userWord {
-	color: #0095d9;
+	color: #00006f;
+}
+
+.errorWord{
+	color: #ee0000;
 }

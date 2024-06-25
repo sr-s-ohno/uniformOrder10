@@ -44,16 +44,19 @@ public class OrderUpdateServlet extends HttpServlet {
 			String ordernoStr = request.getParameter("orderno");
 			String user = request.getParameter("user");
 			int orderno = Integer.parseInt(ordernoStr);
+			
 			//オブジェクト化
 			UserDAO objUserDao = new UserDAO();
 			OrderDAO objOrderDao = new OrderDAO();
+			
 			//ユーザーの名前、アドレスを取得
 			User objUser = objUserDao.selectByUser(user);
+			
 			//ステータス更新
 			objOrderDao.update(payment, send, orderno);
 
 			//メール送信判別
-			if ("入金済み".equals(payment) && "済".equals(send)) {
+			if ("入金済み".equals(payment) && "発送済み".equals(send)) {
 				//メール開始
 				//メール本文
 				StringBuilder text = new StringBuilder();
@@ -75,7 +78,7 @@ public class OrderUpdateServlet extends HttpServlet {
 				sendMail.setAdress(objUser.getMail());
 				//メール送信
 				sendMail.createMail();
-				
+
 				//リクエストスコープ
 				request.setAttribute("message", "メールを送信しました。");
 
@@ -100,22 +103,22 @@ public class OrderUpdateServlet extends HttpServlet {
 				sendMail.setAdress(objUser.getMail());
 				//メール送信
 				sendMail.createMail();
-				
+
 				//リクエストスコープ
 				request.setAttribute("message", "メールを送信しました。");
 			}
 
 		} catch (IllegalStateException e) {
-			
+
 			cmd = "adminlogin";
 			error = "DB接続エラーの為、一覧表示は行えませんでした。";
-			
+
 		} finally {
 			if ("".equals(cmd)) {
-				
+
 				//orderListにフォワード
 				request.getRequestDispatcher("/orderList").forward(request, response);
-				
+
 			} else {
 				//リクエストスコープ
 				request.setAttribute("error", error);

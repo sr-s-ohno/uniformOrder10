@@ -1,21 +1,21 @@
 <!-- /*
  * プログラム名 : ユニフォーム受注管理システム
  * プログラムの説明 : メニュー画面の実装
- * 作成者 : 山田彩乃
- * 作成着手日 : 2024年 6月20日
+ * 作成者 : 光本慶太
+ * 作成着手日 : 2024年 6月25日
  */ -->
 
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="bean.Admin" %>
+<%@page import="bean.User" %>
 
 <%
 //セッションからユーザー情報を取得
-Admin objAdmin = (Admin) session.getAttribute("objAdmin");
+User objUser = (User) session.getAttribute("objUser");
 //セッション切れか確認
-if (objAdmin == null) {
+if (objUser == null) {
 	//セッション切れならerror.jspへフォワード
 	request.setAttribute("error", "セッション切れの為、メニュー画面が表示できませんでした。");
-	request.setAttribute("cmd", "adminlogin");
+	request.setAttribute("cmd", "userlogin");
 	request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 	return;
 }
@@ -30,32 +30,26 @@ if (objAdmin == null) {
    <div style="text-align:center">
 
     <!-- ヘッダー -->
-	<%@include file="/common/adminHeader.jsp"%>
+	<%@include file="/common/userHeader.jsp"%>
 	<p class="space"></p>
 
-	<h2>管理者メニュー</h2>
-	<hr style="height: 5; background-color: #7fef6f"/>
+	<h2>メニュー画面</h2>
+	<hr style="height: 5; background-color: #a0d0ff";/>
 
 	<div id="main">
 		<table>
 			<tr>
-				<td><a href="<%=request.getContextPath()%>/orderList">受注管理一覧</a></td>
+				<td><a href="<%=request.getContextPath()%>/view/orderInsert.jsp">商品購入</a></td>
 			</tr>
 			<p class="space"></p>
 			
 			<tr>
-				<td><a href="<%=request.getContextPath()%>/uniformList">商品一覧</a></td>
+				<td><a href="<%=request.getContextPath()%>/userDetail?user=<%= objUser.getUser() %>&cmd=update">会員情報変更</a></td>
 			</tr>
 			<p class="space"></p>
-			
+
 			<tr>
-				<td><a
-					href="<%=request.getContextPath()%>/view/uniformInsert.jsp">商品登録</a></td>
-			</tr>
-			<p class="space"></p>
-			
-			<tr>
-				<td><a href="<%=request.getContextPath()%>/adminLogout">ログアウト</a></td>
+				<td><a href="<%=request.getContextPath()%>/userLogout">ログアウト</a></td>
 			</tr>
 			<p class="space"></p>
 			
@@ -65,7 +59,7 @@ if (objAdmin == null) {
 	
 	<!-- フッター -->
 	<p class="push"></p>
-	<%@include file="/common/adminFooter.jsp"%>
+	<%@include file="/common/userFooter.jsp"%>
 	
 </body>
 </html>

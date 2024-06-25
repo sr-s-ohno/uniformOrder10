@@ -76,7 +76,7 @@ public class UserLoginServlet extends HttpServlet {
 			if (error.equals("")) {
 
 				//遷移
-				request.getRequestDispatcher("/view/orderInsert.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/userMenu.jsp").forward(request, response);
 
 				//ログイン失敗
 			} else if (error.equals("入力データが間違っています！")) {

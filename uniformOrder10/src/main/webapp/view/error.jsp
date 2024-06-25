@@ -7,7 +7,7 @@ String error = (String)request.getAttribute("error");
 
 <html>
    <head>
-      <title>Error</title>
+      <title>ユニフォーム受注管理システム</title>
       <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/style.css">
    </head>
    
@@ -16,13 +16,13 @@ String error = (String)request.getAttribute("error");
          
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
-         <%@include file= "/common/adminHeader.jsp" %>
+         <%@include file= "/common/errorHeader.jsp" %>
          
-		 <h2>■■エラー■■</h2>
+		 <h2 style ="color:#ff0000">■■エラー■■</h2>
          <p class="space2"></p>
          
          <!-- エラー文表示 -->
-         <p class="space2"><%= error %></p>
+         <p class="space2"  style ="color:#ff0000"><%= error %></p>
          
           
          <!-- 戻り先の指定 -->
@@ -58,7 +58,7 @@ String error = (String)request.getAttribute("error");
       
       <div class="push"></div>
       <!-- フッター -->
-      <%@include file= "/common/adminFooter.jsp" %>
+      <%@include file= "/common/errorFooter.jsp" %>
       
    </body>
 </html>

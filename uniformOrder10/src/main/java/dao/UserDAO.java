@@ -153,4 +153,46 @@ public class UserDAO {
 
 		return count;
 	}
+
+	//該当ユーザーデータの削除処理を行う
+	public void delete(String userid) {
+
+		//変数の宣言
+		Connection con = null;
+		Statement smt = null;
+
+		//戻り値を宣言
+		int count = 0;
+
+		//SQL文
+		String sql = "DELETE FROM userinfo WHERE user = '" + userid + "'";
+
+		try {
+
+			con = getConnection();
+			smt = con.createStatement();
+
+			//sql文をDBへ移行
+			count = smt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+
+			//リソースの開放
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+
+	}
 }

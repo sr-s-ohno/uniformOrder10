@@ -39,7 +39,7 @@ if (userCookie != null) {
 		<p class="space"></p>
 		
 		<h2>ログイン画面</h2>
-		<hr style="height:3; background-color:#0095d9" />
+		<hr style="height: 5; background-color: #a0d0ff" />
         <p class="space2"></p>
 		
 		<div style="margin-bottom:250px">

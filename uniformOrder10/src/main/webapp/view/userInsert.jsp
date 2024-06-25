@@ -45,7 +45,7 @@ if(error == null){
          </div>
          
 		 <h2>会員登録</h2>
-         <hr style="height:3; background-color:#0095d9" />
+         <hr style="height: 5; background-color: #a0d0ff" />
          <p class="space2"></p>
           
          <!-- 変更入力フォーム -->
@@ -74,7 +74,7 @@ if(error == null){
 	            </tr>
 	            
 	            <tr>
-	               <td style="background-color: #0095d9; width:200">新パスワード(確認用)</td>
+	               <td style="background-color: #0095d9; width:200">パスワード(確認用)</td>
 	               <td style="width:150"><input type="password" size="30" name="passCheck"></td>
 	            </tr>
 

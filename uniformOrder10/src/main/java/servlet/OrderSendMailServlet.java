@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import util.MyFormat;
 import util.SendMail;
 
 @WebServlet("/orderSendMail")
@@ -29,12 +30,13 @@ public class OrderSendMailServlet extends HttpServlet {
 
 		String error = "";
 		String cmd = "";
+		//金額フォーマット
+		MyFormat mf = new MyFormat();
 
 		try {
 
 			//セッションオブジェクトの生成
 			HttpSession session = request.getSession();
-
 			//セッションからユーザー情報を取得
 			User objUser = (User) session.getAttribute("objUser");
 			//セッションから注文情報を取得
@@ -52,8 +54,9 @@ public class OrderSendMailServlet extends HttpServlet {
 			//メール本文
 			StringBuilder text = new StringBuilder();
 			text.append(objUser.getUser() + "様\n");
-			text.append("この度は(神田ITユニフォーム)でご注文いただき、ありがとうございました。\n\n");
+			text.append("この度は(神田ITユニフォーム)でご注文いただき、ありがとうございました。\n");
 			text.append("以下内容でご注文を受け付けましたので。連絡致します。\n\n");
+			text.append("振込先はこちらです。(※実際に振り込む口座の情報を記入予定)\n\n");
 
 			/* メール機能 */
 			//氏名 ID を追加
@@ -69,7 +72,7 @@ public class OrderSendMailServlet extends HttpServlet {
 			//合計計算
 			total += order.getPrice() * order.getQuantity();
 			//合計金額表示
-			text.append("合計金額 : " + total + "円\n");
+			text.append("合計金額 : " + mf.moneyFormat(total) + "\n");
 			//発注日を追加
 			text.append("発注日 : " + objDate + "\n");
 			

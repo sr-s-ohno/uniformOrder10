@@ -42,7 +42,7 @@ if(message == null){
          <p class="space"></p>
          
 		 <h2>注文完了</h2>
-		 <hr style="height:3; background-color:#0095d9" />
+		 <hr style="height: 5; background-color: #a0d0ff" />
          <p class="space2"></p>
          
          <!-- 報告 -->

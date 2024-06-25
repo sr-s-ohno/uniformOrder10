@@ -52,7 +52,7 @@ Order order = (Order) request.getAttribute("order");
 		</div>
 		
 		<h2>入金・発送状況変更</h2>
-		<hr style="height: 3; background-color:#00b16b"/>
+		<hr style="height: 5; background-color:#7fef6f"/>
 		<p class="space2"></p>
 
 		<div style="margin-bottom: 250px">
@@ -111,7 +111,8 @@ Order order = (Order) request.getAttribute("order");
 							style="text-align: center; width: 100;">
 								<option value="<%=order.getSend()%>">▼選択してください</option>
 								<option value="未">未</option>
-								<option value="済">済</option>
+								<option value="発送準備中">発送準備中</option>
+								<option value="発送済み">発送済み</option>
 						</select></td>
 					</tr>
 					<%

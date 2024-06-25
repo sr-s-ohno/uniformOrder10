@@ -49,19 +49,19 @@ public class UniformUpdateServlet extends HttpServlet {
 			if (type.equals("")) {
 				//商品名未入力
 				error = "商品名が入力されていないため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 			}
 			if (priceStr.equals("")) {
 				//価格未入力
 				error = "価格が入力されていないため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 			}
 			if (stockStr.equals("")) {
 				//在庫数未入力
 				error = "在庫数が入力されていないため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 			}
 			//該当するuninoのデータがDBに存在するかどうか
@@ -70,7 +70,7 @@ public class UniformUpdateServlet extends HttpServlet {
 			if (uniformError.getUnino() == null) {
 				//該当するuninoのデータが存在しない場合
 				error = "該当する商品が存在しないため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 			}
 			
@@ -98,13 +98,13 @@ public class UniformUpdateServlet extends HttpServlet {
 			if (stock == 0) {
 				
 				error = "入力された価格の値が不正なため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 				
 			} else {
 				
 				error = "入力された在庫の値が不正なため、商品情報更新は行えませんでした。";
-				cmd = "uniformList";
+				cmd = "adminlogin";
 				return;
 				
 			}
@@ -126,14 +126,10 @@ public class UniformUpdateServlet extends HttpServlet {
 
 			//正常な動作
 			if ( cmd.equals("") ) {
+				
 				//遷移
 				request.getRequestDispatcher("/uniformList").forward(request, response);
 				
-			} else if( cmd.equals("uniformList") ) {
-				
-				//リダイレクトエラー
-				request.setAttribute("error", error);
-				request.getRequestDispatcher("/view/uniformUpdate.jsp").forward(request, response);
 				
 			} else {
 				//エラー画面へ遷移

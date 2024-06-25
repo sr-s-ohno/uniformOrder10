@@ -1,4 +1,10 @@
-//最新盤
+/*
+ * プログラム名 : ユニフォーム受注管理システム
+ * プログラムの説明 : 注文完了 メール送信
+ * 更新者 : 大野隼大
+ * 作成日 : 2024年 6月25日
+ */
+
 package servlet;
 
 import java.io.IOException;
@@ -40,7 +46,7 @@ public class OrderInsertServlet extends HttpServlet {
 
 			//購入された情報のパラメータを取得する
 			if (member.equals("1")) {
-				
+
 				user = objUser.getUser();
 				mail = objUser.getMail();
 				address = objUser.getAddress();
@@ -55,7 +61,7 @@ public class OrderInsertServlet extends HttpServlet {
 
 			//パラメータ取得
 			String unino = request.getParameter("type");
-			String strquantity = request.getParameter("quantity");
+			String strQuantity = request.getParameter("quantity");
 			String text = request.getParameter("text");
 
 			if (text == null) {
@@ -65,40 +71,57 @@ public class OrderInsertServlet extends HttpServlet {
 			//値のチェックを行う
 			if (user.equals("")) {
 
-				error = "氏名が未入力のため、登録できません";
+				error = "氏名が未入力のため、注文できません";
 				cmd = "orderInsert";
 				return;
 
-			} else if (user.equals("")) {
+			}
+			if (mail.equals("")) {
 
-				error = "メールアドレスが未入力のため、登録できません";
+				error = "メールアドレスが未入力のため、注文できません";
 				cmd = "orderInsert";
 				return;
 
-			} else if (address.equals("")) {
+			}
+			if (address.equals("")) {
 
-				error = "住所が未入力のため、登録できません";
+				error = "住所が未入力のため、注文できません";
 				cmd = "orderInsert";
 				return;
 
-			} else if (unino.equals("")) {
+			}
+			if (unino.equals("")) {
 
-				error = "商品が選択されていないため、登録できません";
+				error = "商品が選択されていないため、注文できません";
 				cmd = "orderInsert";
 				return;
 
-			} else if (strquantity.equals("")) {
+			}
+			if (strQuantity.equals("")) {
 
-				error = "個数が未入力のため、登録できません";
+				error = "個数が未入力のため、注文できません";
 				cmd = "orderInsert";
 				return;
 
 			}
 
+			//個数を数値変換
+			int quantity = Integer.parseInt(strQuantity);
+
+			//ユニフォーム情報取得
+			//UniformDAOのオブジェクトを生成し、関連メソッドを呼び出す
+			UniformDAO objUniDao = new UniformDAO();
+			Uniform uniform = objUniDao.selectByUnino(unino);
+
+			//在庫数を超える個数を判別
+			if (quantity > uniform.getStock()) {
+				error = "在庫数を超える個数は、注文できません";
+				cmd = "orderInsert";
+				return;
+			}
+
 			//正常動作
 			if (error.equals("")) {
-
-				int quantity = Integer.parseInt(strquantity);
 
 				//セッションスコープに登録
 				objUser.setUser(user);
@@ -106,10 +129,6 @@ public class OrderInsertServlet extends HttpServlet {
 				objUser.setAddress(address);
 				objUser.setMember(member);
 				session.setAttribute("objUser", objUser);
-
-				//UniformDAOのオブジェクトを生成し、関連メソッドを呼び出す
-				UniformDAO objUniDao = new UniformDAO();
-				Uniform uniform = objUniDao.selectByUnino(unino);
 
 				//Uniformオブジェクトをリクエストスコープに登録
 				session.setAttribute("uniform", uniform);
@@ -134,7 +153,15 @@ public class OrderInsertServlet extends HttpServlet {
 			}
 
 			//DB接続エラー
+		} catch (NumberFormatException e) {
+			
+			//エラーメッセージの登録
+			error = "在庫数の値が不正のため、注文を登録できません。";
+			//cmdの登録
+			cmd = "orderInsert";
+
 		} catch (IllegalStateException e) {
+			
 			//エラーメッセージの登録
 			error = "DB接続エラーの為、注文を登録出来ません。";
 			//cmdの登録
