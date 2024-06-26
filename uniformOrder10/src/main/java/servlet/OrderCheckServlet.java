@@ -55,6 +55,7 @@ public class OrderCheckServlet extends HttpServlet {
 				//uninoをセット
 				String unino = uniform.getUnino();
 				order.setUnino(unino);
+				
 			}
 			
 		

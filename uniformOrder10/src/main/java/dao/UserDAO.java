@@ -154,6 +154,45 @@ public class UserDAO {
 		return count;
 	}
 
+	//更新機能
+	public void update(User user) {
+		//変数宣言
+		Connection con = null;
+		Statement smt = null;
+
+		String sql = "UPDATE userinfo SET mail='"
+				+ user.getMail() + "',address='"
+				+ user.getAddress() + "' WHERE user='"
+				+ user.getUser() + "'";
+
+		try {
+			con = getConnection();
+			smt = con.createStatement();
+
+			//SQL文をDBへ発行
+			smt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+
+		} finally {
+			//リソースの開放
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+
+		}
+	}//update
+
 	//該当ユーザーデータの削除処理を行う
 	public void delete(String userid) {
 

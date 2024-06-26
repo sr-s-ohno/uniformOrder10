@@ -85,10 +85,11 @@ if(error == null){
 	         <p class="space"></p>
 	         
          </form>
-      </div>
-      
+         
       <p class="space"></p>
-      <p style="color: #a52a2a; text-align: center"><%= error %></p>
+      <h3 style="color: #a52a2a;"><%= error %></h3>
+      
+      </div>
       
       <!-- フッター -->
       <div class="push"></div>

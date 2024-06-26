@@ -155,7 +155,7 @@ session.setAttribute("objUser", objUser);
 			<input type="submit" value="注文">
 		</form>
 
-		<p style="color: #a52a2a; text-align: center"><%=error%></p>
+		<h3 style="color: #a52a2a;"><%= error %></h3>
 
 	</div>
 

@@ -17,6 +17,7 @@ String error = (String)request.getAttribute("error");
          <!-- メニューデザイン -->
          <!-- ヘッダー -->
          <%@include file= "/common/errorHeader.jsp" %>
+         <p class="space"></p>
          
 		 <h2 style ="color:#ff0000">■■エラー■■</h2>
          <p class="space2"></p>

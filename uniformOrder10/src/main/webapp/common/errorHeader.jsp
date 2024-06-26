@@ -2,12 +2,10 @@
 
 <!-- ヘッダー部分 -->
 <header class="error">
-	<div class="logo">
-		<img src="<%=request.getContextPath()%>/img/logo.png" alt="ロゴ"
-			width="60" height="60">
-	</div>
 	<div class="main">
-		<h1>受注管理システム</h1>
-		<p class="space"></p>
+		<p class="errorWord"><strong><font size="6">受注管理システム</font></strong>
+		<img src="<%=request.getContextPath()%>/img/logo.png" alt="ロゴ"
+			width="137" height="84"></p>
 	</div>
+	<p class="space"></p>
 </header>

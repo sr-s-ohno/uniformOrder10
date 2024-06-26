@@ -6,6 +6,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	vertical-align: middle;
 }
 
 h1 {
@@ -235,6 +236,10 @@ border {
 	width: 100%;
 }
 
+.middle{
+	vertical-align: middle;
+}
+
 /* ====================================
       管理者画面カラー設定
    ==================================== */
@@ -242,6 +247,7 @@ border {
 /* 管理者画面文字色 */
 .adminWord {
 	color: #332200;
+	vertical-align: middle;
 }
 
 .userColor {
@@ -253,6 +259,6 @@ border {
 	color: #00006f;
 }
 
-.errorWord{
-	color: #ee0000;
+.errorWord {
+	color: #332200;
 }

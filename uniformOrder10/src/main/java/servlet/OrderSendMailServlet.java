@@ -44,6 +44,7 @@ public class OrderSendMailServlet extends HttpServlet {
 
 			//DAOオブジェクト宣言
 			OrderDAO objOrderDao = new OrderDAO();
+			
 
 			//合計
 			int total = 0;
@@ -96,7 +97,7 @@ public class OrderSendMailServlet extends HttpServlet {
 			request.setAttribute("message", "メールを送信しました。");
 			//セッションのorderをクリア
 			session.setAttribute("order", null);
-
+			
 			//エラー時
 		} catch (IllegalStateException e) {
 

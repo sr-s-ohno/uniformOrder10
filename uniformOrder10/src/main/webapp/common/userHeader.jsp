@@ -3,8 +3,9 @@
 <!-- ヘッダー部分 -->
 <header class="user">
 	<div class="main">
-		<h1 style = "color:#000066">受注管理システム</h1>
-		<p class="space"></p>
-		<p class="space"></p>
+		<p class="uerWord"><strong><font size="6">受注管理システム</font></strong>
+		<img src="<%=request.getContextPath()%>/img/logo.png" alt="ロゴ"
+			width="137" height="84"></p>
 	</div>
+	<p class="space"></p>
 </header>
